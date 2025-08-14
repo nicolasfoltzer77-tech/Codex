@@ -1,11 +1,14 @@
 from pydantic import BaseModel, Field
-from typing import List
 
 
 class ChatRequest(BaseModel):
+    """Message sent by the user."""
+
     message: str = Field(..., description="Message utilisateur")
-    history: List[str] = Field(default_factory=list, description="Historique éventuel")
+    history: list[str] = Field(default_factory=list, description="Historique")
 
 
 class ChatResponse(BaseModel):
+    """Response returned by the bot."""
+
     reply: str

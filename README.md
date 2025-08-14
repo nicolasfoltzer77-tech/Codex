@@ -1,6 +1,8 @@
-# Bot API (FastAPI) — Starter Pack
+# Trading Bot Scaffold
 
-Un squelette **prêt pour Codex (Web)** : API FastAPI avec tests, lint et CI. Aucune dépendance réseau pendant les tests.
+Un squelette **prêt pour Codex (Web)** pour expérimenter un bot de trading.
+L'API FastAPI expose un simple bot de discussion et un simulateur d'ordres.
+Une intégration Telegram basique permet d'envoyer des notifications.
 
 > 🧠 Voir **[AGENTS.md](AGENTS.md)** pour les règles d’automatisation et la checklist PR.
 
@@ -25,17 +27,6 @@ pytest -q
 ruff check . && ruff format --check .
 ```
 
-## Utiliser avec Codex (Web)
-
-1. Pousse ce dépôt sur GitHub.
-2. Dans ChatGPT, lance **Codex**, connecte GitHub et **créé un environment** sur ce repo.
-3. Donne une tâche du style :
-   > “Ajoute un endpoint `GET /invoices`, écris les tests, fais passer la CI, et ouvre une PR proprement décrite.”
-
-Le sandbox Codex n’a pas d’Internet par défaut : ce pack et ses tests fonctionnent **offline**.
-
----
-
 ## Structure
 
 ```
@@ -45,13 +36,15 @@ app/
 │  └─ bot.py
 └─ schemas/
    └─ bot.py
+services/
+├─ simulator.py
+└─ telegram.py
 tests/
-.github/
- └─ workflows/ci.yml
+Dockerfile
+docker-compose.yml
 AGENTS.md
 requirements.txt
 requirements-dev.txt
 pyproject.toml
 .env.sample
 ```
-
